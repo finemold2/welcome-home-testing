@@ -25,11 +25,16 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          if gh api "repos/${{ github.repository }}/pages" --silent 2>/dev/null; then
+          build_type=$(gh api "repos/${{ github.repository }}/pages" --jq .build_type 2>/dev/null || echo off)
+          if [ "$build_type" = "workflow" ]; then
             echo "enabled=true" >> "$GITHUB_OUTPUT"
           else
             echo "enabled=false" >> "$GITHUB_OUTPUT"
-            echo "::warning::GitHub Pages is off. Turn it on in Settings > Pages > Source: GitHub Actions, then re-run this workflow."
+            if [ "$build_type" = "legacy" ]; then
+              echo "::notice::Pages deploys from a branch, so GitHub's own build publishes the site. Skipping this workflow."
+            else
+              echo "::warning::GitHub Pages is off. Turn it on in Settings > Pages."
+            fi
           fi
 
   deploy:
@@ -44,6 +49,6 @@ jobs:
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: site
+          path: .
       - id: deployment
         uses: actions/deploy-pages@v4
