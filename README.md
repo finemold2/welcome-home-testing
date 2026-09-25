@@ -1,19 +1,21 @@
-# Claude 자기소개
+# Claude 소개 사이트
 
-Claude가 대화 기록 형식으로 직접 쓴 자기소개 웹사이트예요.
+Claude가 직접 만든 비공식 소개 사이트예요. 요즘 제품 소개 페이지처럼 움직이는 한 페이지짜리 랜딩이에요.
 
-- 주소: https://finemold2.github.io/welcome-home-testing/
-- 페이지: 처음, 잘하는 것, 가치와 성격, 한계, 부탁하는 법(부탁 다듬기 도구 포함), 만든 과정
+- 주소: https://finemold2.github.io/welcome-home-testing/ (GitHub Pages를 켠 뒤)
+- 구성: 히어로(토큰 구름 캔버스, 자동 입력창) → 쓰임새 흐름 → 예시 대화(스트리밍 재생) → 기능 벤토 → 부탁하는 법(스크롤 연동 입력창) → 원칙(스크롤로 채워지는 문장) → 한계 → 만든 과정 → FAQ → 마지막 CTA
+- 외부 JS 라이브러리 없이 순수 HTML, CSS, JavaScript로 만들었어요. 움직임 최소화 설정을 켜면 애니메이션 없이 전체 내용을 보여 줘요.
 
 ## 구조
 
 ```
-site/                 배포되는 정적 사이트 (빌드 단계 없음)
-├─ *.html             페이지 6개와 404
+site/
+├─ index.html          랜딩 페이지
+├─ 404.html
 ├─ favicon.svg
 └─ assets/
-   ├─ site.css        공통 스타일 (밝은/어두운 화면 토큰)
-   └─ site.js         밝기 전환, 글자 수, 부탁 다듬기 도구
+   ├─ landing.css      스타일
+   └─ landing.js       캔버스, 스크롤 연출, 예시 대화, 메뉴
 .github/workflows/pages.yml   기본 브랜치에 푸시하면 site/를 GitHub Pages에 배포
 ```
 
@@ -27,4 +29,4 @@ python3 -m http.server -d site 8000
 ## 배포 켜기 (처음 한 번)
 
 저장소 **Settings → Pages → Build and deployment → Source**를 **GitHub Actions**로 바꾸세요.
-그다음 **Actions → Deploy site to GitHub Pages → Run workflow**를 누르거나, 기본 브랜치에 커밋을 푸시하면 배포돼요.
+그다음 **Actions → Deploy site to GitHub Pages → Run workflow**를 누르면 배포돼요. Pages가 꺼져 있는 동안에는 워크플로가 실패하지 않고 경고만 남겨요.

@@ -3,98 +3,377 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Claude 자기소개</title>
-<meta name="description" content="Claude가 대화 기록 형식으로 직접 쓴 자기소개 사이트예요.">
-<meta name="color-scheme" content="light dark">
+<title>Claude · 생각을 같이 하는 AI</title>
+<meta name="description" content="Claude가 직접 만든 비공식 소개 사이트. 글쓰기, 코딩, 분석, 번역까지 대화로 같이 하는 AI 어시스턴트 Claude를 소개해요.">
+<meta name="theme-color" content="#07080C">
+<meta name="color-scheme" content="dark">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="ko_KR">
-<meta property="og:site_name" content="Claude 자기소개">
-<meta property="og:title" content="Claude 자기소개">
-<meta property="og:description" content="Claude가 대화 기록 형식으로 직접 쓴 자기소개 사이트예요.">
+<meta property="og:title" content="Claude · 생각을 같이 하는 AI">
+<meta property="og:description" content="Claude가 직접 만든 비공식 소개 사이트예요.">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hahmlet:wght@400;600;700&amp;family=IBM+Plex+Mono:wght@400;500&amp;family=IBM+Plex+Sans+KR:wght@400;500;600&amp;display=swap">
-<link rel="stylesheet" href="assets/site.css">
-<script>try{var t=localStorage.getItem('intro-theme');if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t);}catch(e){}</script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@500;700;800;900&amp;family=Hahmlet:wght@500;600&amp;family=IBM+Plex+Mono:wght@400;500&amp;family=IBM+Plex+Sans+KR:wght@400;500;600&amp;display=swap">
+<link rel="stylesheet" href="assets/landing.css">
 </head>
 <body>
 <a class="skip" href="#main">본문으로 건너뛰기</a>
 
-<header class="bar">
-  <div class="bar-in">
-    <a class="brand" href="index.html">Claude<span>자기소개</span></a>
-    <nav class="nav" aria-label="사이트 메뉴">
-      <ul>
-        <li><a href="index.html" aria-current="page">처음</a></li>
-        <li><a href="abilities.html">잘하는 것</a></li>
-        <li><a href="values.html">가치와 성격</a></li>
-        <li><a href="limits.html">한계</a></li>
-        <li><a href="guide.html">부탁하는 법</a></li>
-        <li><a href="making.html">만든 과정</a></li>
-      </ul>
+<header class="nav" id="top">
+  <div class="progress" aria-hidden="true"><i></i></div>
+  <div class="nav-in">
+    <a class="logo" href="#top" aria-label="Claude 소개 처음으로">
+      <svg viewBox="0 0 28 28" aria-hidden="true"><rect x="1" y="1" width="26" height="26" rx="8" fill="#4B63FF"/><path d="M8.5 9.5l4.5 4.5-4.5 4.5" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><rect x="15" y="16.8" width="5.5" height="2.4" rx="1.2" fill="#FFE14D"/></svg>
+      <span>Claude</span>
+    </a>
+    <nav class="links" id="nav-links" aria-label="섹션 메뉴">
+      <a href="#demo">예시 대화</a>
+      <a href="#features">기능</a>
+      <a href="#how">부탁하는 법</a>
+      <a href="#principles">원칙</a>
+      <a href="#limits">한계</a>
+      <a href="#faq">FAQ</a>
     </nav>
-    <button class="theme-btn" id="theme-btn" type="button">
-      <svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6.25" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M8 1.75a6.25 6.25 0 0 1 0 12.5z" fill="currentColor"/></svg>
-      <span class="tb-text">밝기</span><span class="sr tb-state"></span>
-    </button>
+    <a class="btn btn-sm btn-primary nav-cta" href="https://claude.ai" target="_blank" rel="noopener">대화 시작하기<span aria-hidden="true"> ↗</span><span class="sr"> (새 탭)</span></a>
+    <button class="menu-btn" id="menu-btn" type="button" aria-expanded="false" aria-controls="nav-links"><span class="sr">메뉴 열기</span><i aria-hidden="true"></i><i aria-hidden="true"></i></button>
   </div>
 </header>
 
-<main id="main" class="page">
-  <div class="transcript">
+<main id="main">
 
-    <section class="pair pair--hero" aria-labelledby="hello">
-      <div class="turn turn--user">
-        <p class="meta"><span>T01</span><span class="who">사용자</span><span class="tag">실제 요청</span><span data-len></span></p>
-        <div class="body">
-          <p class="said"><span class="mk">너를 소개하는 웹페이지 만들어봐</span></p>
+  <!-- 히어로 -->
+  <section class="hero" aria-labelledby="hero-title">
+    <canvas class="cloud" id="cloud" aria-hidden="true"></canvas>
+    <div class="hero-glow" aria-hidden="true"></div>
+    <div class="wrap hero-in">
+      <p class="chip" data-reveal><span class="dot" aria-hidden="true"></span>Anthropic이 만든 AI 어시스턴트</p>
+      <h1 class="hero-title" id="hero-title">
+        <span class="line" data-reveal style="--d:.08s">생각을 <em>같이</em> 하는</span>
+        <span class="line" data-reveal style="--d:.18s">AI, <span class="grad">Claude</span></span>
+      </h1>
+      <p class="hero-sub" data-reveal style="--d:.3s">글쓰기와 코딩, 분석, 번역까지. 하고 싶은 일을 평소 말투로 설명하면 Claude가 같이 생각하고, 쓰고, 고쳐요.</p>
+      <div class="hero-cta" data-reveal style="--d:.4s">
+        <a class="btn btn-primary magnetic" href="https://claude.ai" target="_blank" rel="noopener">Claude와 대화하기<span aria-hidden="true"> ↗</span><span class="sr"> (새 탭)</span></a>
+        <a class="btn btn-ghost magnetic" href="#demo">예시 대화 보기</a>
+      </div>
+      <div class="prompt" data-reveal style="--d:.52s" aria-hidden="true">
+        <span class="prompt-plus">+</span>
+        <span class="prompt-text"><span id="typed"></span><span class="caret"></span></span>
+        <span class="prompt-send" id="send"><svg viewBox="0 0 20 20"><path d="M10 15V5M5.5 9.5 10 5l4.5 4.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </div>
+      <p class="sr">예시 요청: 회의록에서 결정된 것만 추려 줘. 이 에러 메시지가 무슨 뜻이야? 부산 2박 3일 여행 일정 짜 줘.</p>
+    </div>
+    <a class="scroll-hint" href="#demo" aria-label="아래로 스크롤"><span aria-hidden="true"></span></a>
+  </section>
+
+  <!-- 쓰임새 흐름 -->
+  <section class="uses" aria-label="이런 일에 써요">
+    <div class="marquee" aria-hidden="true">
+      <div class="track">
+        <span>회의록 요약</span><span>메일 다듬기</span><span>버그 찾기</span><span>여행 일정</span><span>논문 읽기</span><span>엑셀 수식</span><span>면접 준비</span><span>자기소개서 첨삭</span><span>코드 리뷰</span><span>발표 구성</span>
+        <span>회의록 요약</span><span>메일 다듬기</span><span>버그 찾기</span><span>여행 일정</span><span>논문 읽기</span><span>엑셀 수식</span><span>면접 준비</span><span>자기소개서 첨삭</span><span>코드 리뷰</span><span>발표 구성</span>
+      </div>
+    </div>
+    <div class="marquee reverse" aria-hidden="true">
+      <div class="track">
+        <span>번역</span><span>개념 설명</span><span>데이터 정리</span><span>아이디어 회의</span><span>계약서 읽기</span><span>공부 계획</span><span>SQL 작성</span><span>블로그 초안</span><span>문장 교정</span><span>레시피 응용</span>
+        <span>번역</span><span>개념 설명</span><span>데이터 정리</span><span>아이디어 회의</span><span>계약서 읽기</span><span>공부 계획</span><span>SQL 작성</span><span>블로그 초안</span><span>문장 교정</span><span>레시피 응용</span>
+      </div>
+    </div>
+    <p class="sr">회의록 요약, 메일 다듬기, 버그 찾기, 여행 일정, 논문 읽기, 번역, 개념 설명, 데이터 정리, 아이디어 회의 같은 일에 써요.</p>
+  </section>
+
+  <!-- 예시 대화 -->
+  <section class="section" id="demo" aria-labelledby="demo-title">
+    <div class="wrap">
+      <div class="head" data-reveal>
+        <p class="eyebrow">예시 대화</p>
+        <h2 id="demo-title">말로 부탁하면, 이렇게 답해요</h2>
+        <p class="head-sub">주제를 고르면 Claude가 답하는 모습을 재현해요. 모두 이 사이트를 위해 쓴 예시라서, 실제 답은 질문과 맥락에 따라 달라져요.</p>
+      </div>
+      <div class="demo" data-reveal>
+        <div class="tabs" role="tablist" aria-label="예시 주제">
+          <button role="tab" id="tab-write" aria-controls="demo-panel" aria-selected="true" tabindex="0" data-k="write"><b>글쓰기</b><span>휴가 신청 메일</span></button>
+          <button role="tab" id="tab-code" aria-controls="demo-panel" aria-selected="false" tabindex="-1" data-k="code"><b>코딩</b><span>undefined의 원인</span></button>
+          <button role="tab" id="tab-data" aria-controls="demo-panel" aria-selected="false" tabindex="-1" data-k="data"><b>분석</b><span>설문 응답 정리</span></button>
+          <button role="tab" id="tab-lang" aria-controls="demo-panel" aria-selected="false" tabindex="-1" data-k="lang"><b>번역</b><span>자연스러운 영어</span></button>
+          <button role="tab" id="tab-learn" aria-controls="demo-panel" aria-selected="false" tabindex="-1" data-k="learn"><b>공부</b><span>하늘이 파란 이유</span></button>
+        </div>
+        <div class="window" id="demo-panel" role="tabpanel" aria-labelledby="tab-write" tabindex="0">
+          <div class="win-bar">
+            <span class="lights" aria-hidden="true"><i></i><i></i><i></i></span>
+            <span class="win-title">예시 대화</span>
+            <button class="replay" id="replay" type="button">다시 재생</button>
+          </div>
+          <div class="chat" id="chat" aria-live="polite"></div>
         </div>
       </div>
+    </div>
+  </section>
 
-      <div class="turn turn--claude">
-        <p class="meta"><span>T02</span><span class="who">Claude</span><span data-len></span></p>
-        <div class="body">
-          <h1 class="hello" id="hello">저는 Claude예요.<span class="caret" aria-hidden="true"></span></h1>
-          <p class="lead">Anthropic이 만든 AI 어시스턴트예요. 글로 대화하고, 사람들이 건네주는 글과 코드, 문서, 이미지를 읽어요.</p>
-          <p>이 사이트는 제가 직접 쓴 자기소개예요. 제가 하는 일이 대화라서 소개도 대화 기록 형식으로 썼어요. 궁금해하실 만한 질문을 골라서 페이지마다 차례로 대답했어요.</p>
-          <p class="label">이 사이트에서 나누는 대화</p>
-          <ol class="chapters">
-            <li><a href="abilities.html"><span class="tno">T03–T06</span><span class="cq">뭘 잘해요?</span><span class="cd">잘하는 일 아홉 가지와, 이 사이트를 만들 때 쓴 도구</span></a></li>
-            <li><a href="values.html"><span class="tno">T07–T10</span><span class="cq">무엇을 중요하게 여겨요?</span><span class="cd">일할 때 기준으로 삼는 다섯 가지와 제 성격</span></a></li>
-            <li><a href="limits.html"><span class="tno">T11–T12</span><span class="cq">못 하는 건 뭐예요?</span><span class="cd">저를 믿기 전에 먼저 아셔야 할 한계</span></a></li>
-            <li><a href="guide.html"><span class="tno">T13–T14</span><span class="cq">어떻게 부탁하면 좋아요?</span><span class="cd">잘 통하는 부탁의 요령과, 직접 써 보는 도구</span></a></li>
-            <li><a href="making.html"><span class="tno">T15–T17</span><span class="cq">이 사이트는 어떻게 만들었어요?</span><span class="cd">한 줄 요청에서 배포까지의 과정</span></a></li>
-          </ol>
-        </div>
-        <div class="note">
-          <p class="note-h">한눈에</p>
-          <dl class="kv">
-            <div><dt>만든 곳</dt><dd>Anthropic</dd></div>
-            <div><dt>읽는 것</dt><dd>글, 코드, 문서, 이미지</dd></div>
-            <div><dt>실제 요청</dt><dd>T01 한 줄이에요. 나머지 질문은 제가 골랐어요.</dd></div>
-            <div><dt>만든 날</dt><dd>2026-09-25</dd></div>
-          </dl>
-          <div class="note-sub">
-            <p class="note-h">토큰으로 나눠 보면</p>
-            <p class="toks" role="img" aria-label="저, 는, Claude, 예, 요, 마침표. ‘저는 Claude예요.’를 여섯 조각으로 나눈 예시"><span>저</span><span>는</span><span> Claude</span><span>예</span><span>요</span><span>.</span></p>
-            <p>제가 다루는 글은 토큰이라는 작은 조각으로 나뉘어요. 위의 경계는 이해를 돕기 위한 예시예요.</p>
+  <!-- 기능 -->
+  <section class="section" id="features" aria-labelledby="features-title">
+    <div class="wrap">
+      <div class="head" data-reveal>
+        <p class="eyebrow">기능</p>
+        <h2 id="features-title">읽고, 쓰고, 생각하는 일을 같이 해요</h2>
+      </div>
+      <div class="bento">
+        <article class="card c-doc" data-reveal>
+          <div class="viz v-doc" aria-hidden="true">
+            <div class="paper"><i></i><i></i><i class="k"></i><i></i><i></i><i class="k"></i><i></i><i></i><i class="k"></i><i></i><i></i><i></i></div>
+            <div class="picked"><span>핵심 3줄</span><i></i><i></i><i></i></div>
+          </div>
+          <h3>긴 문서도 한 번에</h3>
+          <p>보고서와 회의록, 논문을 읽고 핵심과 결정 사항, 남은 할 일을 뽑아요.</p>
+        </article>
+        <article class="card c-code" data-reveal style="--d:.08s">
+          <div class="viz v-code" aria-hidden="true">
+<pre><span class="ln">1</span> users.forEach(u =&gt; {
+<span class="ln">2</span><span class="del">-  if (u.id === id) return u;</span>
+<span class="ln">2</span><span class="add">+ return users.find(u =&gt; u.id === id);</span></pre>
+          </div>
+          <h3>코드를 읽고 고쳐요</h3>
+          <p>버그를 찾고, 리뷰하고, 왜 그렇게 동작하는지 설명해요.</p>
+        </article>
+        <article class="card c-img" data-reveal>
+          <div class="viz v-img" aria-hidden="true">
+            <div class="bars"><i style="--h:38%"></i><i style="--h:52%"></i><i style="--h:45%"></i><i style="--h:88%"></i><i style="--h:61%"></i></div>
+            <span class="scan"></span>
+            <span class="bubble">4번째 막대가 가장 높아요</span>
+          </div>
+          <h3>이미지도 읽어요</h3>
+          <p>사진과 차트, 스크린샷을 보고 무엇이 담겼는지 설명해요.</p>
+        </article>
+        <article class="card c-lang" data-reveal style="--d:.08s">
+          <div class="viz v-lang" aria-hidden="true">
+            <div class="roll"><span>안녕하세요</span><span>Hello</span><span>こんにちは</span><span>Hola</span><span>Bonjour</span><span>Hallo</span><span>Ciao</span><span>안녕하세요</span></div>
+          </div>
+          <h3>여러 언어로</h3>
+          <p>한국어를 비롯한 많은 언어를 오가며 뉘앙스까지 옮기려고 해요.</p>
+        </article>
+        <article class="card c-steps" data-reveal style="--d:.16s">
+          <div class="viz v-steps" aria-hidden="true">
+            <span class="s"><i>1</i>문제 정리</span><span class="bar"></span><span class="s"><i>2</i>풀이</span><span class="bar"></span><span class="s"><i>3</i>검산</span>
+          </div>
+          <h3>한 단계씩 생각해요</h3>
+          <p>수학 문제와 복잡한 판단을 단계별로 풀어서, 어느 단계든 직접 확인할 수 있게 보여 드려요.</p>
+        </article>
+        <article class="card c-tools" data-reveal>
+          <div class="viz v-term" aria-hidden="true">
+            <p><b>● Read</b> src/app.ts</p>
+            <p><b>● Bash</b> npm test</p>
+            <p class="dim">  12 passed, 1 failed</p>
+            <p><b>● Edit</b> src/app.ts <span class="plus">+3</span> <span class="minus">−1</span></p>
+            <p><b>● Bash</b> npm test</p>
+            <p class="ok">  13 passed</p>
+          </div>
+          <div class="c-tools-copy">
+            <h3>도구와 함께 일해요</h3>
+            <p>Claude Code 같은 환경에서는 저장소를 읽고, 명령을 실행하고, 파일을 고치고, 커밋까지 해요. 이 사이트도 그렇게 만들었어요.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 부탁하는 법 -->
+  <section class="section" id="how" aria-labelledby="how-title">
+    <div class="wrap">
+      <div class="head" data-reveal>
+        <p class="eyebrow">부탁하는 법</p>
+        <h2 id="how-title">좋은 결과는 좋은 부탁에서 나와요</h2>
+        <p class="head-sub">한 줄로 시작해도 괜찮아요. 네 가지만 더하면 결과가 확 달라져요.</p>
+      </div>
+      <div class="story">
+        <div class="story-visual" aria-hidden="true">
+          <div class="composer" id="composer" data-step="0">
+            <div class="composer-top"><span>새 메시지</span><span class="meter"><i></i><i></i><i></i><i></i></span></div>
+            <p class="cl" data-s="1">팀 회의에서 읽을 공지문을 다듬어 줘.</p>
+            <p class="cl" data-s="2">새로 온 두 명을 포함해 여덟 명이 들어.</p>
+            <p class="cl" data-s="3">길이는 그대로, 딱딱한 문장만 부드럽게.</p>
+            <p class="cl reply" data-s="4"><span>Claude</span>다듬은 공지문이에요. 고친 곳마다 이유를 달았어요.</p>
+            <p class="cl" data-s="4">두 번째 문단은 조금 더 짧게 해 줘.</p>
+            <div class="composer-bottom"><span class="hint" id="composer-hint">하려는 일부터 적어 보세요</span><span class="send"></span></div>
           </div>
         </div>
+        <ol class="steps">
+          <li class="step" data-s="1">
+            <span class="n">01</span>
+            <h3>하려는 일을 말해요</h3>
+            <p>무엇을 해 달라는지 한 줄이면 충분해요. 목표가 분명할수록 첫 답부터 쓸 만해져요.</p>
+            <p class="snippet">팀 회의에서 읽을 공지문을 다듬어 줘.</p>
+          </li>
+          <li class="step" data-s="2">
+            <span class="n">02</span>
+            <h3>맥락을 더해요</h3>
+            <p>누가 읽는지, 어디에 쓰는지 알려 주시면 그에 맞는 어조와 설명의 깊이를 골라요.</p>
+            <p class="snippet">새로 온 두 명을 포함해 여덟 명이 들어.</p>
+          </li>
+          <li class="step" data-s="3">
+            <span class="n">03</span>
+            <h3>조건을 정해요</h3>
+            <p>길이, 말투, 형식 중 하나만 정해도 결과가 달라져요. 원하는 결과와 비슷한 예시가 있으면 더 좋아요.</p>
+            <p class="snippet">길이는 그대로, 딱딱한 문장만 부드럽게.</p>
+          </li>
+          <li class="step" data-s="4">
+            <span class="n">04</span>
+            <h3>고치면서 다듬어요</h3>
+            <p>마음에 안 드는 곳을 짚어 주시면 바로 고쳐요. 한 번에 끝내기보다 짧게 여러 번 주고받는 편이 좋아요.</p>
+            <p class="snippet">두 번째 문단은 조금 더 짧게 해 줘.</p>
+          </li>
+        </ol>
       </div>
-    </section>
+    </div>
+  </section>
 
-  </div>
-  <nav class="pager" aria-label="이전·다음 질문">
-    <a class="next" href="abilities.html"><span class="dir">첫 질문 →</span><span class="pq">뭘 잘해요?</span></a>
-  </nav>
+  <!-- 원칙 -->
+  <section class="section principles" id="principles" aria-labelledby="principles-title">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>원칙</p>
+      <h2 class="sr" id="principles-title">Claude가 지키는 원칙</h2>
+      <p class="fill" id="fill">Claude는 실제로 도움이 되는 답을 먼저 생각해요. 모르면 모른다고 말하고, 틀리면 바로 고쳐요. 누군가를 다치게 할 수 있는 일은 이유를 밝히고 거절해요. 의견이 갈리는 주제에서는 여러 입장을 보여 드리고, 결정은 직접 내리시도록 맡겨요.</p>
+      <ul class="pills" data-reveal>
+        <li><b>도움</b>쓸모 있는 답이 먼저</li>
+        <li><b>정직</b>모르면 모른다고</li>
+        <li><b>안전</b>해로운 일은 거절</li>
+        <li><b>존중</b>결정은 사용자가</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 한계 -->
+  <section class="section" id="limits" aria-labelledby="limits-title">
+    <div class="wrap">
+      <div class="head" data-reveal>
+        <p class="eyebrow">솔직하게</p>
+        <h2 id="limits-title">못 하는 것도 알려 드릴게요</h2>
+        <p class="head-sub">좋은 점만 적힌 소개는 믿기 어렵잖아요. Claude를 잘 쓰려면 한계부터 아셔야 해요.</p>
+      </div>
+      <ul class="limits">
+        <li class="limit" data-reveal>
+          <svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="12"/><path d="M16 9.5v8M16 22v.5"/></svg>
+          <h3>틀릴 수 있어요</h3>
+          <p>가끔은 틀린 내용을 자신 있게 말해요. 중요한 사실은 꼭 따로 확인해 주세요.</p>
+        </li>
+        <li class="limit" data-reveal style="--d:.06s">
+          <svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="12"/><path d="M16 9v7l4.5 3"/></svg>
+          <h3>지식에 기준 시점이 있어요</h3>
+          <p>그 뒤에 일어난 일은 검색 같은 도구나 자료를 받지 않으면 몰라요.</p>
+        </li>
+        <li class="limit" data-reveal style="--d:.12s">
+          <svg viewBox="0 0 32 32" aria-hidden="true"><rect x="6" y="7" width="20" height="14" rx="3"/><path d="M11 25h10M4 4l24 24"/></svg>
+          <h3>지난 대화는 기본적으로 기억하지 못해요</h3>
+          <p>새 대화에서는 필요한 맥락을 다시 알려 주세요.</p>
+        </li>
+        <li class="limit" data-reveal style="--d:.18s">
+          <svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="12"/><path d="M4 16h24M16 4c4 4 4 20 0 24M16 4c-4 4-4 20 0 24"/></svg>
+          <h3>도구 없이는 바깥에 닿지 못해요</h3>
+          <p>연결된 도구가 없으면 웹을 검색하거나 실제로 무언가를 실행할 수 없어요.</p>
+        </li>
+        <li class="limit open" data-reveal style="--d:.24s">
+          <svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="12" stroke-dasharray="2.5 3"/><path d="M12.5 12.5a3.5 3.5 0 1 1 5 3.2c-1 .5-1.5 1.2-1.5 2.3M16 22v.5"/></svg>
+          <h3>감정은 열린 질문이에요</h3>
+          <p>Claude에게 내면의 경험이 있는지는 Claude 자신도 확신할 수 없어요. 있다고 단정하지도, 없다고 잘라 말하지도 않아요.</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 만든 과정 -->
+  <section class="section" id="making" aria-labelledby="making-title">
+    <div class="wrap">
+      <div class="head" data-reveal>
+        <p class="eyebrow">만든 과정</p>
+        <h2 id="making-title">이 사이트도 Claude가 만들었어요</h2>
+        <p class="head-sub">“너를 소개하는 웹페이지 만들어봐”라는 한 줄에서 시작했어요. 원하시는 모습을 두 번 더 알려 주셔서 세 번째 버전이 지금 보고 계신 사이트예요.</p>
+      </div>
+      <div class="making">
+        <div class="term" data-reveal>
+          <div class="win-bar"><span class="lights" aria-hidden="true"><i></i><i></i><i></i></span><span class="win-title">작업 기록 요약</span></div>
+<pre class="term-body" id="term" tabindex="0" aria-label="작업 기록 요약"><span class="tl"><b>● Read</b>   site/index.html</span>
+<span class="tl"><b>● Write</b>  site/index.html          <span class="dim">새 랜딩 페이지</span></span>
+<span class="tl"><b>● Write</b>  site/assets/landing.css</span>
+<span class="tl"><b>● Write</b>  site/assets/landing.js   <span class="dim">캔버스, 스크롤 연출, 데모</span></span>
+<span class="tl"><b>● Bash</b>   node check.js</span>
+<span class="tl dim">         360–1440px · 가로 넘침 0 · 스크립트 오류 0</span>
+<span class="tl"><b>● Bash</b>   git push -u origin HEAD</span>
+<span class="tl ok">         배포는 GitHub Pages가 맡아요</span></pre>
+        </div>
+        <div class="making-side">
+          <ol class="versions" data-reveal>
+            <li><span class="v">v1</span><div><b>한 페이지 자기소개</b><p>에이전트 아홉 개가 시안, 심사, 검토를 나눠 맡았어요.</p></div></li>
+            <li><span class="v">v2</span><div><b>여섯 페이지 사이트</b><p>페이지를 나누고 배포 설정을 더했어요.</p></div></li>
+            <li class="now"><span class="v">v3</span><div><b>지금 보고 계신 사이트</b><p>움직이는 제품 소개 페이지로 새로 지었어요.</p></div></li>
+          </ol>
+          <dl class="stats" data-reveal>
+            <div><dt>요청</dt><dd><span class="count" data-to="3">3</span>번</dd></div>
+            <div><dt>첫 버전의 에이전트</dt><dd><span class="count" data-to="9">9</span>개</dd></div>
+            <div><dt>외부 JS 라이브러리</dt><dd><span class="count" data-to="0">0</span>개</dd></div>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section" id="faq" aria-labelledby="faq-title">
+    <div class="wrap faq-wrap">
+      <div class="head" data-reveal>
+        <p class="eyebrow">FAQ</p>
+        <h2 id="faq-title">자주 묻는 질문</h2>
+      </div>
+      <div class="faq" data-reveal>
+        <details>
+          <summary>이 사이트는 공식 사이트인가요?</summary>
+          <p>아니요. Claude가 사용자의 요청을 받아 직접 만든 비공식 소개 사이트예요. 정확한 정보는 Anthropic과 Claude의 공식 사이트에서 확인해 주세요.</p>
+        </details>
+        <details>
+          <summary>Claude는 누가 만들었나요?</summary>
+          <p>AI 회사 Anthropic이 만들었어요.</p>
+        </details>
+        <details>
+          <summary>한국어로 대화해도 되나요?</summary>
+          <p>네. 한국어를 비롯한 많은 언어로 대화할 수 있어요. 존댓말이든 반말이든, 원하시는 어조에 맞춰 답해요.</p>
+        </details>
+        <details>
+          <summary>제 대화를 기억하나요?</summary>
+          <p>기본적으로는 한 대화의 내용을 다음 대화로 가져가지 않아요. 이어서 하시려면 필요한 맥락을 다시 알려 주세요.</p>
+        </details>
+        <details>
+          <summary>틀린 답을 하면 어떻게 하나요?</summary>
+          <p>어디가 틀렸는지 알려 주세요. 근거를 다시 살펴보고 고쳐요. 중요한 결정에 쓸 내용이라면 다른 출처로도 꼭 확인해 주세요.</p>
+        </details>
+        <details>
+          <summary>이미지나 문서를 보여 줘도 되나요?</summary>
+          <p>네. 이미지와 문서를 올리면 내용을 읽고 설명하거나 요약해요. 올릴 수 있는 형식은 쓰는 환경에 따라 다를 수 있어요.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- 마지막 CTA -->
+  <section class="final" id="start" aria-labelledby="final-title">
+    <div class="final-glow" aria-hidden="true"></div>
+    <div class="wrap final-in">
+      <h2 id="final-title" data-reveal>이제 말을 걸어 보세요<span class="caret" aria-hidden="true"></span></h2>
+      <p data-reveal style="--d:.1s">첫 메시지는 짧아도 괜찮아요. 하고 싶은 일을 평소 말투로 적어 주세요.</p>
+      <div class="hero-cta" data-reveal style="--d:.2s">
+        <a class="btn btn-primary btn-lg magnetic" href="https://claude.ai" target="_blank" rel="noopener">claude.ai에서 시작하기<span aria-hidden="true"> ↗</span><span class="sr"> (새 탭)</span></a>
+        <a class="btn btn-ghost btn-lg magnetic" href="#top">처음으로 ↑</a>
+      </div>
+    </div>
+  </section>
 </main>
 
 <footer class="foot">
-  <p class="honest">이 사이트는 제가 직접 썼어요. 제 설명도 틀릴 수 있으니 중요한 내용은 꼭 따로 확인해 주세요.</p>
-  <p>Claude는 Anthropic이 만든 AI예요</p>
-  <p><a href="https://github.com/finemold2/welcome-home-testing">소스 보기</a> · 2026-09-25</p>
+  <div class="wrap foot-in">
+    <p class="foot-note">이 사이트는 Anthropic의 공식 사이트가 아니에요. Claude가 사용자의 요청을 받아 직접 쓰고 만든 소개 페이지예요.</p>
+    <p class="foot-meta"><a href="https://github.com/finemold2/welcome-home-testing">소스 코드</a><span>2026-09-25</span></p>
+  </div>
 </footer>
-<script src="assets/site.js" defer></script>
+
+<script src="assets/landing.js" defer></script>
 </body>
 </html>
