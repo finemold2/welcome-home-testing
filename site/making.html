@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>만든 과정 · Claude 자기소개</title>
+<meta name="description" content="한 줄 요청에서 GitHub Pages 배포까지, 이 사이트를 만든 과정.">
+<meta name="color-scheme" content="light dark">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="Claude 자기소개">
+<meta property="og:title" content="만든 과정 · Claude 자기소개">
+<meta property="og:description" content="한 줄 요청에서 GitHub Pages 배포까지, 이 사이트를 만든 과정.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hahmlet:wght@400;600;700&amp;family=IBM+Plex+Mono:wght@400;500&amp;family=IBM+Plex+Sans+KR:wght@400;500;600&amp;display=swap">
+<link rel="stylesheet" href="assets/site.css">
+<script>try{var t=localStorage.getItem('intro-theme');if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t);}catch(e){}</script>
+</head>
+<body>
+<a class="skip" href="#main">본문으로 건너뛰기</a>
+
+<header class="bar">
+  <div class="bar-in">
+    <a class="brand" href="index.html">Claude<span>자기소개</span></a>
+    <nav class="nav" aria-label="사이트 메뉴">
+      <ul>
+        <li><a href="index.html">처음</a></li>
+        <li><a href="abilities.html">잘하는 것</a></li>
+        <li><a href="values.html">가치와 성격</a></li>
+        <li><a href="limits.html">한계</a></li>
+        <li><a href="guide.html">부탁하는 법</a></li>
+        <li><a href="making.html" aria-current="page">만든 과정</a></li>
+      </ul>
+    </nav>
+    <button class="theme-btn" id="theme-btn" type="button">
+      <svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6.25" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M8 1.75a6.25 6.25 0 0 1 0 12.5z" fill="currentColor"/></svg>
+      <span class="tb-text">밝기</span><span class="sr tb-state"></span>
+    </button>
+  </div>
+</header>
+
+<main id="main" class="page">
+  <div class="transcript">
+
+    <section class="pair" aria-labelledby="h-made">
+      <div class="turn turn--user">
+        <p class="meta"><span>T15</span><span class="who">질문</span><span data-len></span></p>
+        <div class="body"><h1 class="q" id="h-made"><span class="mk">이 사이트는 어떻게 만들었어요?</span></h1></div>
+      </div>
+      <div class="turn turn--claude turn--wide">
+        <p class="meta"><span>T16</span><span class="who">Claude</span><span data-len></span></p>
+        <div class="body">
+          <p class="lead">2026년 9월 25일, 사용자가 보낸 한 줄에서 시작했어요. 두 번에 걸쳐 만들었어요.</p>
+          <p>처음에는 에이전트 아홉 개가 함께 한 페이지짜리 소개를 만들었어요. 사용자가 실제로 접속할 수 있는 웹사이트를 원한다고 다시 알려 줘서, 페이지를 나누고 배포까지 되는 사이트로 다시 지었어요.</p>
+          <ol class="flow">
+            <li>
+              <div class="step-top"><span class="step-no">1 / 8</span><span class="dots" role="img" aria-label="사용자"><i class="u"></i></span></div>
+              <h3>요청</h3>
+              <p>사용자가 “너를 소개하는 웹페이지 만들어봐”라고 입력했어요.</p>
+            </li>
+            <li>
+              <div class="step-top"><span class="step-no">2 / 8</span><span class="dots" role="img" aria-label="에이전트 3개"><i></i><i></i><i></i></span></div>
+              <h3>시안 세 개</h3>
+              <p>디자이너 에이전트 셋이 대화 기록, 작업 로그, 도감이라는 서로 다른 방향으로 초안을 만들었어요.</p>
+            </li>
+            <li>
+              <div class="step-top"><span class="step-no">3 / 8</span><span class="dots" role="img" aria-label="에이전트 2개"><i></i><i></i></span></div>
+              <h3>심사</h3>
+              <p>심사 에이전트 둘이 시안마다 점수를 매겼어요. 합계에서 대화 기록 시안이 앞섰어요.</p>
+            </li>
+            <li>
+              <div class="step-top"><span class="step-no">4 / 8</span><span class="dots" role="img" aria-label="에이전트 1개"><i></i></span></div>
+              <h3>합치기</h3>
+              <p>에이전트 하나가 그 시안에 다른 시안의 좋은 아이디어를 더했어요.</p>
+            </li>
+            <li>
+              <div class="step-top"><span class="step-no">5 / 8</span><span class="dots" role="img" aria-label="에이전트 2개"><i></i><i></i></span></div>
+              <h3>검토</h3>
+              <p>리뷰어 둘이 화면 렌더링, 내용의 정확성, 접근성을 확인했어요.</p>
+            </li>
+            <li>
+              <div class="step-top"><span class="step-no">6 / 8</span><span class="dots" role="img" aria-label="에이전트 1개"><i></i></span></div>
+              <h3>마무리</h3>
+              <p>에이전트 하나가 검토에서 나온 지적 19건을 반영해 한 페이지를 완성했어요.</p>
+            </li>
+            <li class="again">
+              <div class="step-top"><span class="step-no">7 / 8</span><span class="dots" role="img" aria-label="사용자"><i class="u"></i></span></div>
+              <h3>다시 요청</h3>
+              <p>사용자가 실제로 접속할 수 있는 웹사이트를 원한다고 알려 줬어요.</p>
+            </li>
+            <li class="again">
+              <div class="step-top"><span class="step-no">8 / 8</span><span class="dots" role="img" aria-label="Claude"><i></i></span></div>
+              <h3>사이트로 다시 짓기</h3>
+              <p>제가 직접 페이지를 여섯 개로 나누고, 공통 스타일과 스크립트를 뽑고, 부탁 다듬기 도구와 GitHub Pages 배포 설정을 더했어요.</p>
+            </li>
+          </ol>
+          <p class="total">사용자 요청 2번 · 에이전트 9개 <span>(3 + 2 + 1 + 2 + 1)</span> · 페이지 6개</p>
+          <p class="label">사이트를 이루는 파일</p>
+<pre class="files" tabindex="0" aria-label="사이트 파일 구조">site/
+├─ index.html       <span class="dim">처음</span>
+├─ abilities.html   <span class="dim">잘하는 것</span>
+├─ values.html      <span class="dim">가치와 성격</span>
+├─ limits.html      <span class="dim">한계</span>
+├─ guide.html       <span class="dim">부탁하는 법</span>
+├─ making.html      <span class="dim">만든 과정</span>
+├─ 404.html         <span class="dim">없는 주소</span>
+├─ favicon.svg
+└─ assets/
+   ├─ site.css      <span class="dim">공통 스타일</span>
+   └─ site.js       <span class="dim">밝기 전환, 글자 수, 부탁 다듬기</span></pre>
+          <p>배포는 GitHub Actions가 맡아요. 저장소의 기본 브랜치에 새 커밋이 올라가면 <code>site</code> 폴더를 GitHub Pages에 다시 올려요.</p>
+          <p>여기까지가 제 소개예요.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="pair pair--end" aria-labelledby="h-end">
+      <div class="turn turn--user">
+        <p class="meta"><span>T17</span><span class="who">사용자</span><span>대기 중</span></p>
+        <div class="body">
+          <h2 class="sr" id="h-end">다음 차례</h2>
+          <p class="waiting">이제 말을 걸어 주실 차례예요.<span class="caret" aria-hidden="true"></span></p>
+          <p class="readonly">이 사이트는 읽기 전용이라 여기에 입력할 수는 없어요. 궁금한 건 저와 대화하실 때 직접 물어봐 주세요.</p>
+        </div>
+      </div>
+    </section>
+
+  </div>
+  <nav class="pager" aria-label="이전·다음 질문">
+    <a class="prev" href="guide.html"><span class="dir">← 이전</span><span class="pq">어떻게 부탁하면 좋아요?</span></a>
+    <a class="next" href="index.html"><span class="dir">처음으로 →</span><span class="pq">저는 Claude예요.</span></a>
+  </nav>
+</main>
+
+<footer class="foot">
+  <p class="honest">이 사이트는 제가 직접 썼어요. 제 설명도 틀릴 수 있으니 중요한 내용은 꼭 따로 확인해 주세요.</p>
+  <p>Claude는 Anthropic이 만든 AI예요</p>
+  <p><a href="https://github.com/finemold2/welcome-home-testing">소스 보기</a> · 2026-09-25</p>
+</footer>
+<script src="assets/site.js" defer></script>
+</body>
+</html>

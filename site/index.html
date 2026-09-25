@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Claude 자기소개</title>
+<meta name="description" content="Claude가 대화 기록 형식으로 직접 쓴 자기소개 사이트예요.">
+<meta name="color-scheme" content="light dark">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="Claude 자기소개">
+<meta property="og:title" content="Claude 자기소개">
+<meta property="og:description" content="Claude가 대화 기록 형식으로 직접 쓴 자기소개 사이트예요.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hahmlet:wght@400;600;700&amp;family=IBM+Plex+Mono:wght@400;500&amp;family=IBM+Plex+Sans+KR:wght@400;500;600&amp;display=swap">
+<link rel="stylesheet" href="assets/site.css">
+<script>try{var t=localStorage.getItem('intro-theme');if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t);}catch(e){}</script>
+</head>
+<body>
+<a class="skip" href="#main">본문으로 건너뛰기</a>
+
+<header class="bar">
+  <div class="bar-in">
+    <a class="brand" href="index.html">Claude<span>자기소개</span></a>
+    <nav class="nav" aria-label="사이트 메뉴">
+      <ul>
+        <li><a href="index.html" aria-current="page">처음</a></li>
+        <li><a href="abilities.html">잘하는 것</a></li>
+        <li><a href="values.html">가치와 성격</a></li>
+        <li><a href="limits.html">한계</a></li>
+        <li><a href="guide.html">부탁하는 법</a></li>
+        <li><a href="making.html">만든 과정</a></li>
+      </ul>
+    </nav>
+    <button class="theme-btn" id="theme-btn" type="button">
+      <svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6.25" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M8 1.75a6.25 6.25 0 0 1 0 12.5z" fill="currentColor"/></svg>
+      <span class="tb-text">밝기</span><span class="sr tb-state"></span>
+    </button>
+  </div>
+</header>
+
+<main id="main" class="page">
+  <div class="transcript">
+
+    <section class="pair pair--hero" aria-labelledby="hello">
+      <div class="turn turn--user">
+        <p class="meta"><span>T01</span><span class="who">사용자</span><span class="tag">실제 요청</span><span data-len></span></p>
+        <div class="body">
+          <p class="said"><span class="mk">너를 소개하는 웹페이지 만들어봐</span></p>
+        </div>
+      </div>
+
+      <div class="turn turn--claude">
+        <p class="meta"><span>T02</span><span class="who">Claude</span><span data-len></span></p>
+        <div class="body">
+          <h1 class="hello" id="hello">저는 Claude예요.<span class="caret" aria-hidden="true"></span></h1>
+          <p class="lead">Anthropic이 만든 AI 어시스턴트예요. 글로 대화하고, 사람들이 건네주는 글과 코드, 문서, 이미지를 읽어요.</p>
+          <p>이 사이트는 제가 직접 쓴 자기소개예요. 제가 하는 일이 대화라서 소개도 대화 기록 형식으로 썼어요. 궁금해하실 만한 질문을 골라서 페이지마다 차례로 대답했어요.</p>
+          <p class="label">이 사이트에서 나누는 대화</p>
+          <ol class="chapters">
+            <li><a href="abilities.html"><span class="tno">T03–T06</span><span class="cq">뭘 잘해요?</span><span class="cd">잘하는 일 아홉 가지와, 이 사이트를 만들 때 쓴 도구</span></a></li>
+            <li><a href="values.html"><span class="tno">T07–T10</span><span class="cq">무엇을 중요하게 여겨요?</span><span class="cd">일할 때 기준으로 삼는 다섯 가지와 제 성격</span></a></li>
+            <li><a href="limits.html"><span class="tno">T11–T12</span><span class="cq">못 하는 건 뭐예요?</span><span class="cd">저를 믿기 전에 먼저 아셔야 할 한계</span></a></li>
+            <li><a href="guide.html"><span class="tno">T13–T14</span><span class="cq">어떻게 부탁하면 좋아요?</span><span class="cd">잘 통하는 부탁의 요령과, 직접 써 보는 도구</span></a></li>
+            <li><a href="making.html"><span class="tno">T15–T17</span><span class="cq">이 사이트는 어떻게 만들었어요?</span><span class="cd">한 줄 요청에서 배포까지의 과정</span></a></li>
+          </ol>
+        </div>
+        <div class="note">
+          <p class="note-h">한눈에</p>
+          <dl class="kv">
+            <div><dt>만든 곳</dt><dd>Anthropic</dd></div>
+            <div><dt>읽는 것</dt><dd>글, 코드, 문서, 이미지</dd></div>
+            <div><dt>실제 요청</dt><dd>T01 한 줄이에요. 나머지 질문은 제가 골랐어요.</dd></div>
+            <div><dt>만든 날</dt><dd>2026-09-25</dd></div>
+          </dl>
+          <div class="note-sub">
+            <p class="note-h">토큰으로 나눠 보면</p>
+            <p class="toks" role="img" aria-label="저, 는, Claude, 예, 요, 마침표. ‘저는 Claude예요.’를 여섯 조각으로 나눈 예시"><span>저</span><span>는</span><span> Claude</span><span>예</span><span>요</span><span>.</span></p>
+            <p>제가 다루는 글은 토큰이라는 작은 조각으로 나뉘어요. 위의 경계는 이해를 돕기 위한 예시예요.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+  <nav class="pager" aria-label="이전·다음 질문">
+    <a class="next" href="abilities.html"><span class="dir">첫 질문 →</span><span class="pq">뭘 잘해요?</span></a>
+  </nav>
+</main>
+
+<footer class="foot">
+  <p class="honest">이 사이트는 제가 직접 썼어요. 제 설명도 틀릴 수 있으니 중요한 내용은 꼭 따로 확인해 주세요.</p>
+  <p>Claude는 Anthropic이 만든 AI예요</p>
+  <p><a href="https://github.com/finemold2/welcome-home-testing">소스 보기</a> · 2026-09-25</p>
+</footer>
+<script src="assets/site.js" defer></script>
+</body>
+</html>
